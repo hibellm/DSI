@@ -1,0 +1,286 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+{% if session.logged_in == NULL %}
+  <div class="jumbotron text-center">
+    <h1>Welcome To the DSI dashboard</h1>
+    <p class="lead">This application is built on the <a href="http://flask.pocoo.org/docs/0.12/">Python Flask framework</a>. A Micro web-development framework for Python.</p>
+      <a href="/login" class="ui button green large"><i class="ui icon sign in"></i>Login</a>
+  </div>
+ {% else %}
+
+ <div class="ui segment green inverted">
+    <h1 class="ui header aligned center">DSI Home Dashboard</h1>
+    <div class="description">
+      A Summary of DSI activities.
+    </div>
+  </div>
+
+
+  <div class="ui grid">
+      <div class="eight wide column">
+         <div class="ui segment pink">
+            <div class="ui header">Incoming Requests</div>
+
+            <div class="ui feed">
+            {% for gm in gmails %}
+            {% if loop.index < 4 %}
+                <div class="event">
+                  <div class="label">
+                    <i class="ui icon {{gm.gmType|icon_fmt_text}} circular basic"></i>
+                  </div>
+                  <div class="content">
+                    <div class="summary">
+                      <a class="user" href="">{{ gm.gmType}}</a>
+                      <div class="date">{{gm.gmSentDate}}  1 Hour Ago</div>
+                      <div class="extra text">{{gm.gmSubject}}</div>
+                    </div>
+                  </div>
+            </div>
+                {% endif %}
+               {% endfor %}
+        </div> 
+      </div>      </div>
+      <script src="/assets/js/Chart.min.js"></script>
+      <div class="eight wide column">
+          <div class="ui segment red">
+    
+            <h1>Simple Line Chart</h1>
+            <!-- bar chart canvas element -->
+            <canvas id="myChart" width="500" height="400"></canvas>
+            <p id="caption">The chart is displaying a simple line chart.</p>
+            
+          </div>   
+          <!-- RAIL ATTACHED TO THE RIGHT SEGMENT-->
+          <div class="ui right rail attached">
+              <div class="ui segment">
+                <!--RAIL CONTENT-->
+                <div class="ui feed">
+                    <div class="event">
+                      <div class="label">
+                        <img src="/assets/images/00433928.png">
+                      </div>
+                      <div class="content">
+                        <div class="summary">
+                          <a class="user">
+                            Elliot Fu
+                          </a> added you as a friend
+                          <div class="date">
+                            1 Hour Ago
+                          </div>
+                        </div>
+                        <div class="meta">
+                          <a class="like">
+                            <i class="like icon"></i> 4 Likes
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="event">
+                      <div class="label">
+                        <img src="/assets/images/00434880.png">
+                      </div>
+                      <div class="content">
+                        <div class="summary">
+                          <a>Helen Troy</a> added <a>2 new illustrations</a>
+                          <div class="date">
+                            4 days ago
+                          </div>
+                        </div>
+                        <div class="extra images">
+                          <a><img src="/images/wireframe/image.png"></a>
+                          <a><img src="/images/wireframe/image.png"></a>
+                        </div>
+                        <div class="meta">
+                          <a class="like">
+                            <i class="like icon"></i> 1 Like
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="event">
+                      <div class="label">
+                        <img src="/assets/images/00433936.png">
+                      </div>
+                      <div class="content">
+                        <div class="summary">
+                          <a class="user">
+                            Jenny Hess
+                          </a> added you as a friend
+                          <div class="date">
+                            2 Days Ago
+                          </div>
+                        </div>
+                        <div class="meta">
+                          <a class="like">
+                            <i class="like icon"></i> 8 Likes
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="event">
+                      <div class="label">
+                        <img src="/assets/images/00434885.png">
+                      </div>
+                      <div class="content">
+                        <div class="summary">
+                          <a>Joe Henderson</a> posted on his page
+                          <div class="date">
+                            3 days ago
+                          </div>
+                        </div>
+                        <div class="extra text">
+                          Ours is a life of constant reruns. We're always circling back to where we'd we started, then starting all over again. Even if we don't run extra laps that day, we surely will come back for more of the same another day soon.
+                        </div>
+                        <div class="meta">
+                          <a class="like">
+                            <i class="like icon"></i> 5 Likes
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="event">
+                      <div class="label">
+                        <img src="/images/avatar/small/justen.jpg">
+                      </div>
+                      <div class="content">
+                        <div class="summary">
+                          <a>Justen Kitsune</a> added <a>2 new photos</a> of you
+                          <div class="date">
+                            4 days ago
+                          </div>
+                        </div>
+                        <div class="extra images">
+                          <a><img src="/images/wireframe/image.png"></a>
+                          <a><img src="/images/wireframe/image.png"></a>
+                        </div>
+                        <div class="meta">
+                          <a class="like">
+                            <i class="like icon"></i> 41 Likes
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--END OF RAIL CONTENT-->                
+
+
+
+              </div>
+            </div>
+      </div>
+      <div class="eight wide column">
+          <div class="ui segment yellow">
+            <div id="piechart"></div>
+           </div>
+         </div>
+       <div class="eight wide column">
+           <div class="ui segment teal">
+               afdgaga
+           </div>        
+ 
+       </div>      
+  </div>    
+{% endif %}
+
+
+<script>
+  // Global parameters:
+  // do not resize the chart canvas when its container does (keep at 600x400px)
+  Chart.defaults.global.responsive = false;
+
+  // define the chart data
+  var chartData = {
+    labels : [{% for item in data %}
+               "{{item.month}}",
+              {% endfor %}],
+    datasets : [{
+        label: '{{ legend }}',
+        fill: true,
+        lineTension: 0.1,
+        backgroundColor: "rgba(75,192,192,0.4)",
+        borderColor: "rgba(75,192,192,1)",
+        borderCapStyle: 'butt',
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: 'miter',
+        pointBorderColor: "rgba(75,192,192,1)",
+        pointBackgroundColor: "#fff",
+        pointBorderWidth: 1,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: "rgba(75,192,192,1)",
+        pointHoverBorderColor: "rgba(220,220,220,1)",
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data : [{% for item in data %}
+                  {{item.value}},
+                {% endfor %}],
+        spanGaps: false
+    }]
+  }
+
+  // get bar chart canvas
+  var ctx = document.getElementById("myChart").getContext("2d");
+
+  // create the chart using the chart canvas
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: chartData,
+  });
+</script>
+<script>
+  (function(d3) {
+    'use strict';
+
+    var dataset2 = [
+      { label: 'Abulia', count: 10 },
+      { label: 'Betelgeuse', count: 20 },
+      { label: 'Cantaloupe', count: 30 },
+      { label: 'Dijkstra', count: 40 }
+    ];
+
+    var dataset=[
+    {% for item in data %}
+        { label: '{{item.category}}', count: {{item.value}} },
+    {% endfor %}
+    ];
+
+    var width = 360;
+    var height = 360;
+    var radius = Math.min(width, height) / 2;
+
+    //var color = d3.scaleOrdinal(d3.schemeCategory20b);
+    var color = d3.scaleOrdinal()
+  .range(['#A60F2B', '#648C85', '#B3F2C9', '#528C18', '#C3F25C']);
+
+    var svg = d3.select('#piechart')
+      .append('svg')
+      .attr('width', width)
+      .attr('height', height)
+      .append('g')
+      .attr('transform', 'translate(' + (width / 2) +
+        ',' + (height / 2) + ')');
+
+    var arc = d3.arc()
+      .innerRadius(0)
+      .outerRadius(radius);
+
+    var pie = d3.pie()
+      .value(function(d) { return d.count; })
+      .sort(null);
+
+        var path = svg.selectAll('path')
+          .data(pie(dataset))
+          .enter()
+          .append('path')
+          .attr('d', arc)
+          .attr('fill', function(d) {
+            return color(d.data.label);
+          });
+
+  })(window.d3);
+</script>
+
+{% endblock %}

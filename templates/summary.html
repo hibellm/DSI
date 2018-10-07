@@ -1,0 +1,82 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="ui segment green inverted">
+  <h1 class="ui header aligned center">JIRA Summary Dashboard</h1>
+  <div class="description">
+    A list of JIRA tickets and their status.
+  </div>
+</div>
+
+<div class="ui segment">
+
+  <div class="ui segment inverted grey">
+    Summary :
+  <div class="ui labeled button" tabindex="0">
+      <div class="ui green button">
+        <i class="ui icon arrow circle down "></i>Open
+      </div>
+      
+        <a class="ui basic left pointing label active">{% for count in counts %}{% if loop.index==1 %}{{count.total}}{% endif %}{% endfor %}</a>
+ 
+    </div>
+    <div class="ui labeled button" tabindex="0">
+      <div class="ui yellow button">
+        <i class="ui icon cog"></i>In Progress
+      </div>
+        <a class="ui basic left pointing label active">{% for count in counts %}{% if loop.index==2 %}{{count.total}}{% endif %}{% endfor %}</a>
+    </div>
+    <div class="ui labeled button" tabindex="0">
+      <div class="ui red button">
+        <i class="ui icon thumbs up"></i>Closed
+      </div>
+        <a class="ui basic left pointing label active">{% for count in counts %}{% if loop.index==3 %}{{count.total}}{% endif %}{% endfor %}</a>
+    </div>
+  </div>
+
+
+  <table class="ui table very basic sortable" id="jiratable">
+    <thead>
+      <th class="ascending">JIRA Code</th>
+      <th class="ascending">Subject</th>
+      <th class="ascending">Description</th>
+      <th class="ascending">Status</th>
+    </thead>
+    {% for jt in jira %}
+    {% if jt.status != 'Closed'%}
+    <tr>
+      <td><a href="http://www.bbc.co.uk" target='_blank'>{{ jt.jirakey }}</a></td>
+      <td>{{ jt.subject }}</td>
+      <td>{{ jt.description }}</td>
+      {% if jt.status == 'Closed' %}
+        <td><div class="ui label red">{{ jt.status }}</div></td>
+      {% elif jt.status == 'Open'%}
+      <td><div class="ui label green">{{ jt.status }}</div></td>
+      {% elif jt.status == 'In Progress'%}
+      <td><div class="ui label yellow">{{ jt.status }}</div></td>
+      {% else %}
+      <td><div class="ui label grey">{{ jt.status }}</div></td>
+      {%endif%}
+    </tr>  
+    {%endif%}  
+    {% endfor %}
+  </table>
+</div>
+
+
+
+  <div class="ui basic modal" id="mod1">
+    <div class="content">
+      <div class="description">
+          {% include 'includes/_messages.html' %}
+      </div>
+    </div>
+  </div>
+
+
+  <!--JS SCRIPTS FOR THE SEMANTIC-UI TO WORK AS REQUIRED-->
+  <script type="text/javascript">
+    $('#jiratable').tablesort();
+  </script>  
+  
+{% endblock %}
