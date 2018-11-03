@@ -1,0 +1,37 @@
+INFO:root:<div class="ui segment green inverted">Starting</div>
+INFO:root:code2run - this is 0
+INFO:root:this is an Odd number
+INFO:root:this is an Odd number
+ERROR:root:this is an Odd number
+INFO:root:this is an Odd number
+ERROR:root:this is an Odd number
+WARNING:root:this is an Odd number
+INFO:root:this is an Odd number
+INFO:root:code2run - this is 2
+INFO:root:this is an even number
+INFO:root:code2run - this is 3
+INFO:root:this is an Odd number
+INFO:root:code2run - this is 4
+INFO:root:this is an even number
+INFO:root:code2run - this is 5
+INFO:root:this is an Odd number
+INFO:root:code2run - this is 6
+INFO:root:this is an even number
+INFO:root:code2run - this is 7
+INFO:root:this is an Odd number
+INFO:root:code2run - this is 8
+INFO:root:this is an even number
+INFO:root:this is an Odd number
+INFO:root:<div class="ui segment green inverted">Finished</div>
+
+INFO:root:this is an Odd number
+ERROR:root:this is an Odd number
+INFO:root:this is an Odd number
+INFO:root:this is an Odd number
+ERROR:root:this is an Odd number
+INFO:root:this is an Odd number
+ERROR:root:this is an Odd number
+WARNING:root:this is an Odd number
+
+
+

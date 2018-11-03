@@ -1,41 +1,57 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-<div class="ui segment green inverted">
+<div class="ui segment teal inverted">
   <h1 class="ui header aligned center">JIRA Summary Dashboard</h1>
-  <div class="description">
-    A list of JIRA tickets and their status.
-  </div>
+  {% for jt in jira %}
+    {% if loop.first %}
+      Updated: <div class="ui label teal basic">{{jt.createdate}}</div>
+    {% endif %}
+  {% endfor %}
 </div>
 
 <div class="ui segment">
 
+  <!--SUMMARY BADGES-->
   <div class="ui segment inverted grey">
     Summary :
   <div class="ui labeled button" tabindex="0">
-      <div class="ui green button">
-        <i class="ui icon arrow circle down "></i>Open
-      </div>
-      
+      <div class="ui green button" id="jiraopen">
+        <i class="ui icon arrow circle down"></i>Open
+      </div>     
         <a class="ui basic left pointing label active">{% for count in counts %}{% if loop.index==1 %}{{count.total}}{% endif %}{% endfor %}</a>
- 
     </div>
     <div class="ui labeled button" tabindex="0">
-      <div class="ui yellow button">
+      <div class="ui yellow button" id="jiraip">
         <i class="ui icon cog"></i>In Progress
       </div>
         <a class="ui basic left pointing label active">{% for count in counts %}{% if loop.index==2 %}{{count.total}}{% endif %}{% endfor %}</a>
     </div>
     <div class="ui labeled button" tabindex="0">
-      <div class="ui red button">
+      <div class="ui red button" id="jiraclosed">
         <i class="ui icon thumbs up"></i>Closed
       </div>
         <a class="ui basic left pointing label active">{% for count in counts %}{% if loop.index==3 %}{{count.total}}{% endif %}{% endfor %}</a>
     </div>
+
   </div>
-
-
-  <table class="ui table very basic sortable" id="jiratable">
+  
+  <!--FILTER SELECTION BOX-->
+  <div class="ui checked checkbox "><input type="checkbox" name="open" id="cbopen" checked="" onchange="$('.Open').toggleClass('hideme')"><label>Open tickets</label></div>
+  <div class="ui checked checkbox "><input type="checkbox" name="ip" id="cbip" checked=""  onchange="$('.InProgress').toggleClass('hideme')"><label>IP tickets</label></div>
+  <div class="ui checked checkbox "><input type="checkbox" name="closed" id="cbclosed"  onchange="$('.Closed').toggleClass('hideme')"><label>Closed tickets</label></div>
+ 
+  <!--TABLE COLUMN HIDE/SHOW-->
+  <div>
+    Column Hide/Show: 
+    <button class="ui button mini compact toggle-vis teal" data-column="0" id="btn1">JIRA Code</button>
+    <button class="ui button mini compact toggle-vis teal" data-column="1" id="btn2">Subject</button>
+    <button class="ui button mini compact toggle-vis teal" data-column="2" id="btn3">Description</button>
+    <button class="ui button mini compact toggle-vis teal" data-column="3" id="btn4">Status</button>            
+  </div>
+  
+  <!--JIRA TABLE-->
+  <table class="ui table very basic sortable compact display" id="jiratable">
     <thead>
       <th class="ascending">JIRA Code</th>
       <th class="ascending">Subject</th>
@@ -43,24 +59,23 @@
       <th class="ascending">Status</th>
     </thead>
     {% for jt in jira %}
-    {% if jt.status != 'Closed'%}
-    <tr>
+    <tr class="{{ jt.status | replace(' ', '') }} {% if jt.status == 'Closed' %} hideme {% endif %}" >
       <td><a href="http://www.bbc.co.uk" target='_blank'>{{ jt.jirakey }}</a></td>
       <td>{{ jt.subject }}</td>
       <td>{{ jt.description }}</td>
       {% if jt.status == 'Closed' %}
         <td><div class="ui label red">{{ jt.status }}</div></td>
       {% elif jt.status == 'Open'%}
-      <td><div class="ui label green">{{ jt.status }}</div></td>
+        <td><div class="ui label green">{{ jt.status }}</div></td>
       {% elif jt.status == 'In Progress'%}
-      <td><div class="ui label yellow">{{ jt.status }}</div></td>
+        <td><div class="ui label yellow">{{ jt.status }}</div></td>
       {% else %}
-      <td><div class="ui label grey">{{ jt.status }}</div></td>
+        <td><div class="ui label grey">{{ jt.status }}</div></td>
       {%endif%}
     </tr>  
-    {%endif%}  
     {% endfor %}
   </table>
+
 </div>
 
 
@@ -76,7 +91,28 @@
 
   <!--JS SCRIPTS FOR THE SEMANTIC-UI TO WORK AS REQUIRED-->
   <script type="text/javascript">
-    $('#jiratable').tablesort();
-  </script>  
+    $(document).ready(function() {
+        $('#jiratable').DataTable({
+
+        });
+
+        var table = $('#jiratable').DataTable();
+        $('button.toggle-vis').on( 'click', function (e) {
+        e.preventDefault();
+ 
+        // Get the column API object
+        var column = table.column( $(this).attr('data-column') );
+ 
+        // Toggle the visibility
+        column.visible( ! column.visible() );
+        } );
+      
+        $("#btn1").click(function(){$(this).toggleClass('teal');});
+        $("#btn2").click(function(){$(this).toggleClass('teal');});
+        $("#btn3").click(function(){$(this).toggleClass('teal');});
+        $("#btn4").click(function(){$(this).toggleClass('teal');});
+
+    });
+  </script>
   
 {% endblock %}

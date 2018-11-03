@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="ui segment teal inverted">
+  <h1 class="ui header aligned center">Delivery Summary</h1>
+  <div class="description">
+    A list of deliveries
+  </div>
+</div>
+
+
+
+<div class="ui segment green fixed">
+  <div id="checkfiles">
+      <div class="ui checkbox"><input type="checkbox" name="example"><label>Final CSR</label></div>
+      <div class="ui checkbox"><input type="checkbox" name="example"><label>eCRF</label></div>
+      <div class="ui checkbox"><input type="checkbox" name="example"><label>Protocol</label></div>
+      <div class="ui checkbox"><input type="checkbox" name="example"><label>Another Document</label></div>
+      <div class="ui checkbox"><input type="checkbox" name="example"><label>Final Report</label></div>
+  </div>
+</div>
+
+  <!--JIRA TABLE-->
+  <table class="ui table very basic sortable compact display" id="checktable">
+      <thead>
+        <th>JIRA Code</th>
+        <th>Document Check List</th>
+        <th>File Path</th>
+        <th></th>
+      </thead>
+      {% for chk in chkfiles %}
+      <tr>
+        <td><a href="http://www.bbc.co.uk" target='_blank'>{{ chk.jirakey }}</a></td>
+        <td class="left aligned"><div class="ui teal button" data-title="{{chk.filehash}}" data-content="{{chk.filehash}}">{{chk.filename}}</div></td>
+        <td>{{ chk.pathtofile }}</td>        
+        <td>{{ chk.filedescription }}</td>
+      </tr>  
+      {% endfor %}
+    </table>
+
+   
+
+  <!--JS SCRIPTS FOR THE SEMANTIC-UI TO WORK AS REQUIRED-->
+  <script type="text/javascript">
+  $('.ui.checkbox').checkbox()
+
+  $('.example .teal.button').popup({
+      on: 'click'
+    });
+
+
+    $(document).ready(function() {
+        $('#checktable').DataTable({
+
+        });
+      });
+        
+
+  </script>  
+  
+{% endblock %}

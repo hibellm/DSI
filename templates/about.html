@@ -1,27 +1,32 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-<div class="jumbotron text-center">
-  <h1>About the DSI dashboard</h1>
-  <p class="lead">This application is built on the <a href="http://flask.pocoo.org/docs/0.12/">Python Flask framework</a>. A Micro web-development framework for Python.</p>
-  {% if session.logged_in == NULL %}
-    <a href="/login" class="ui button green large"><i class="ui icon sign in"></i>Login</a>
-  {% endif %}
-</div>
+
+<div class="ui segment teal inverted">
+    <h1 class="ui header aligned center">About the DSI dashboard</h1>
+      <p class="lead">This application is built on the <a href="http://flask.pocoo.org/docs/0.12/">Python Flask framework</a>. A Micro web-development framework for Python.</p>
+  </div>
+
   <h1 class="ui header large">About the dashboard</h1>
   <div class="ui header">
-    <p>This application has been created as a front end to the meta data used by the Data Access &amp; Curation group</p>
-    <p>For an End-user to access a Data Source, and Read & Understand must be completed.
-       <ui>
-         <li>You must be <a href="{{url_for('login')}}">logged in</a> to access some features.</li>
-         <li>Please use the <a href="{{url_for('login')}}"> Menu item </a> to access other features.</li>
-       </ui>
+    <p>This application has been created as a front end to the meta data used by the Data Sharing &amp; Integration group.</p>
+    <p>For an End-users</p>
+       {% if not session.logged_in %}
+       <ul>
+          <li>Please <a href="{{url_for('login')}}">log in</a> so that we can customize your content and to access some features.</li>
+          <li>Please use the Menu items to access other features.</li>
+       </ul>
+       {% else %}
+       <ul>
+          <li>Please use the Menu items to access other features.</li>
+       </ul>
+       {% endif %} 
+
        <div class="ui segment basic">
         <p>Any comments, issues or errors then please contact the <a href="mailto:marcus.hibell@roche.com?Subject=About%20the%20DSI%20dashboard" target="_top">DSI team.</p>
       </div>
       <div class="ui segment basic">
-          <div class="ui label">Semanti-UI<div class="detail">version 2.3.3</div></div>
-          <div class="ui label">Bootstrap<div class="detail">version 3.3.7</div></div>          
+          <div class="ui label">Semanti-UI<div class="detail">version 2.4.2</div></div>
           <div class="ui label">Jquery<div class="detail">version 3.2.1</div></div>
           <div class="ui label">Chart.js<div class="detail">version 2.7.2</div></div>
           <div class="ui label">D3.js<div class="detail">version 5.7.0</div></div>

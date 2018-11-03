@@ -3,14 +3,14 @@
 {% block body %}
 
 {% if session.logged_in == NULL %}
-  <div class="jumbotron text-center">
-    <h1>Welcome To the DSI dashboard</h1>
+  <div class="ui segment teal inverted">
+    <h1>DSI Home Dashboard</h1>
     <p class="lead">This application is built on the <a href="http://flask.pocoo.org/docs/0.12/">Python Flask framework</a>. A Micro web-development framework for Python.</p>
-      <a href="/login" class="ui button green large"><i class="ui icon sign in"></i>Login</a>
+    <a class="ui yellow basic button" href="/login"><i class="ui icon sign in"></i>Log in</a>
   </div>
  {% else %}
 
- <div class="ui segment green inverted">
+ <div class="ui segment teal inverted">
     <h1 class="ui header aligned center">DSI Home Dashboard</h1>
     <div class="description">
       A Summary of DSI activities.
@@ -21,7 +21,7 @@
   <div class="ui grid">
       <div class="eight wide column">
          <div class="ui segment pink">
-            <div class="ui header">Incoming Requests</div>
+            <div class="ui header">Incoming Requests (Last 60 days)</div>
 
             <div class="ui feed">
             {% for gm in gmails %}
@@ -38,23 +38,28 @@
                     </div>
                   </div>
             </div>
-                {% endif %}
-               {% endfor %}
+            {% endif %}
+            {% endfor %}
         </div> 
-      </div>      </div>
+    </div>      
+  </div>
       <script src="/assets/js/Chart.min.js"></script>
       <div class="eight wide column">
           <div class="ui segment red">
     
-            <h1>Simple Line Chart</h1>
+            <h1>Simple Line Chart</h1></h4>(SELECT * FROM testdata)</h4>
             <!-- bar chart canvas element -->
             <canvas id="myChart" width="500" height="400"></canvas>
             <p id="caption">The chart is displaying a simple line chart.</p>
             
           </div>   
+
+
+
           <!-- RAIL ATTACHED TO THE RIGHT SEGMENT-->
           <div class="ui right rail attached">
               <div class="ui segment">
+                <div class="ui header teal aligned center horizontal divider"><i class="ui icon tasks"></i>Recent Activity</div>
                 <!--RAIL CONTENT-->
                 <div class="ui feed">
                     <div class="event">

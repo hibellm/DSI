@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="ui segment teal inverted">
+  <h1 class="ui header aligned center">JIRA Summary Dashboard</h1>
+  <div class="description">
+    A list of JIRA tickets and their status.
+  </div>
+</div>
+
+
+<div class="ui segment">
+
+    <form method="POST" class="ui form" action="/anonymize" id="anonform">
+      <div class="ui sub header">Database schema</div>
+      <div class="field required"> 
+        <select name="schemasel" class="ui fluid search dropdown"  id="schemasel">
+            <option value=""></option> 
+            {% for schema in schemas %} 
+              {% if loop.changed(schema.table_schema) %}
+                <option value="{{schema.table_schema}}">{{schema.table_schema}}</option>
+              {% endif %}
+            {% endfor %}
+        </select>
+      </div>
+
+      <input class="ui button mini grey" type="submit" value="Select Schema" id="schemasumit"/>
+      <input class="ui button mini yellow" type="clear" value="Clear"  id="schemaclear"/>
+      
+      <div class="ui sub header">Table/File</div>
+      <div class="field required"> 
+        <select name="tablesel" class="ui fluid search dropdown"  id="tablesel">   
+            <option value=""></option>        
+            {% for table in schemas %}
+                <option value="{{table.table_name}}">{{table.table_name}} [ {{table.table_schema}} ]</option> 
+            {% endfor %}
+        </select>
+      </div>
+    </form>
+
+ </div>
+    
+
+  <div class="ui basic modal" id="mod1">
+    <div class="content">
+      <div class="description">
+          {% include 'includes/_messages.html' %}
+      </div>
+    </div>
+  </div>
+
+  <!--JS SCRIPTS FOR THE SEMANTIC-UI TO WORK AS REQUIRED-->
+  <script type="text/javascript">
+    $('#jiratable').tablesort();
+    $('#studyselect').dropdown();
+    $('#schemasel').dropdown();
+    $('#tablesel').dropdown();
+
+    $('#schemasubmit').form('submit');
+    $('#schemaclear').form('clear');
+  </script>  
+  
+{% endblock %}

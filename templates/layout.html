@@ -8,22 +8,23 @@
       <title>DSI dashboard</title>
 
       <!-- STYLESHEETS -->    
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css">
-
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.semanticui.min.css">
       <link rel="icon" type="image/png" href="/assets/favicon.ico">
-      
+<!--       
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script> -->
+
+      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+      <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/1.10.19/js/dataTables.semanticui.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
       <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js'></script>
       <script src="https://d3js.org/d3.v5.min.js"></script>
-      <script src="/assets/js/tablesort.js"></script>
-      <!-- <script src="//cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script> -->
-      <!-- <script type="text/javascript">
-        CKEDITOR.replace('editor')
-      </script> -->
-      
+      <!-- <script src="/assets/js/tablesort.js"></script> -->
+
+
       <!--JS SCRIPTS FOR THE SEMANTIC-UI TO WORK AS REQUIRED-->
       <script type="text/javascript">
         $(document).ready(function() {
@@ -34,18 +35,67 @@
             };
         });
 
-        $('#jiratable').tablesort();
+        //$('#jiratable').tablesort();
 
+        $('.ui.modal').modal({blurring: true}).modal('show');
       </script>
+  <script>
+      $(document)
+        .ready(function() {
+          $('.ui.form')
+            .form({
+          inline: true,
+              fields: {
+                userid: {
+                  identifier  : 'userid',
+                  rules: [
+                    {
+                      type   : 'empty',
+                      prompt : 'Please enter your UserID'
+                    }
+                  ]
+                },                
+                email: {
+                  identifier  : 'email',
+                  rules: [
+                    {
+                      type   : 'empty',
+                      prompt : 'Please enter your e-mail'
+                    },
+                    {
+                      type   : 'email',
+                      prompt : 'Please enter a valid e-mail'
+                    }
+                  ]
+                },
+                password: {
+                  identifier  : 'password',
+                  rules: [
+                    {
+                      type   : 'empty',
+                      prompt : 'Please enter your Roche password'
+                    }
+                  ]
+                }
+              }
+            })
+          ;
+        })
+      ;
+
+      </script>   
+      
+      <style>
+        .hideme{display:none;}
+      </style>
 
   </head>
-
   <body>
 
-
       {% include 'includes/_navbar.html' %}
-    <div class="container">
-      {# % include 'includes/_messages.html' % #}
+
+    <div class="ui main container" style="padding-top: 125px;">
+      {# % include 'includes/_messages.html' % #}      
       {% block body %}{% endblock %}
     </div>
 

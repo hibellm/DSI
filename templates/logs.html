@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="ui segment teal inverted">
+  <h1 class="ui header aligned center">Delivery Summary</h1>
+  <div class="description">
+    A list of deliveries
+  </div>
+</div>
+
+
+
+<div class="ui segment green fixed">
+  <div id="logfiles">
+    {% for lf in logfiles %}
+    {{lf.filename}}
+    {{lf.filedescription}}
+    {{lf.filepath}}
+    {{lf.filehash}}
+    {{lf.category}}
+    {{lf.jirakey}}
+    {% endfor %}    
+  </div>
+</div>
+
+   
+
+  <!--JS SCRIPTS FOR THE SEMANTIC-UI TO WORK AS REQUIRED-->
+  <script type="text/javascript">
+  
+  </script>  
+  
+{% endblock %}

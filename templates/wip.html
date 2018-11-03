@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="ui segment teal inverted">
+  <h1 class="ui header aligned center">Delivery Summary</h1>
+  <div class="description">
+    A list of deliveries
+  </div>
+</div>
+
+
+<div class="ui button grey" id="runcode">Run code</div>
+
+
+<div class="ui compact menu">
+  <a class="item">
+    <i class="icon mail"></i> Errors
+    <div class="floating ui red label">{{e}}</div>
+  </a>
+  <a class="item">
+    <i class="icon users"></i> Warnings
+    <div class="floating ui teal label">{{w}}</div>
+  </a>
+</div>
+
+<div class="ui segment green fixed">
+  <div id="toclear">
+    {% for ll in loglines %}
+      {{ll|safe}}
+    {% endfor %}    
+  </div>
+</div>
+
+   
+
+  <!--JS SCRIPTS FOR THE SEMANTIC-UI TO WORK AS REQUIRED-->
+  <script type="text/javascript">
+    $('#jiratable').tablesort();
+    $('#studyselect').dropdown();
+    $('#schemasel').dropdown();
+    $('#tablesel').dropdown();
+
+    $('#search-select').dropdown();
+
+    $('#schemasubmit').form('submit');
+    $('#schemaclear').form('clear');
+
+  </script>  
+  
+{% endblock %}

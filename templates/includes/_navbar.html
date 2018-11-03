@@ -1,34 +1,30 @@
-<nav class="navbar navbar-default">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/"><i class="ui icon home"></i>DSI dashboard</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="/summary">Summary</a></li>
-            {% if session.logged_in %}
-              <li><a href="/anonymize">Anonymize</a></li>
-            {% endif %}
-            {% if session.logged_out %}            
-              <li><a href="/register">Register</a></li>
-            {% endif %}
-            <li><a href="/about">About</a></li>
-          </ul>
 
-          <ul class="nav navbar-nav navbar-right">
-            {% if session.logged_in %}
-              <li><a href="#">Logged-in as: <div class="ui label blue">{{session.userid}}</div></a> </li>
-              <li><a href="/logout"><i class="ui sign out icon"></i>Logout</a></li>
-            {% else %}
-              <li><a href="/login"><i class="ui sign in icon"></i>Login</a></li>
-            {% endif %}
-          </ul>
-        </div>
+  <div class="ui push container">
+    <div class="ui placeholder"></div>
+    <div class="ui fixed large secondary teal inverted pointing menu" id="navbar">
+      <a href="/" class="header item"> <i class="ui icon slideshare huge yellow"></i>
+
+      {% if session.logged_in %}      
+        <a href="/" class="item "><i class="ui icon home"></i>Home</a>
+        <a href="/summary" class="item "><i class="ui icon tasks"></i>Summary</a>
+        <a href="/metrics" class="item "><i class="ui icon chart bar"></i>Metrics</a>
+        <a href="/anonymize" class="item "><i class="ui icon user secret"></i>Anonymizer</a>
+        <a href="/anonymize_schema" class="item "><i class="ui icon user secret"></i>anon_schema</a>
+        <a href="/logs" class="item "><i class="ui icon list alternate outline"></i>Deliverables</a>
+        <a href="/check" class="item "><i class="ui icon check square outline"></i>Filecheck</a>        
+        <a href="/wip" class="item "><i class="ui icon user secret"></i>WIP</a>        
+      {% endif %}
+
+      <div class="right item">
+        <a class="item" href="/about"><i class="ui icon question circle outline"></i>About</a>
+      {% if session.logged_in %}      
+        <a class="ui yellow button" href="/"><i class="ui icon user"></i>{{session.userid}}</a>
+        <a class="ui yellow basic button" href="/logout"><i class="ui icon sign out"></i>Logout</a>
+      {% else %}
+        <a class="ui yellow basic button" href="/login"><i class="ui icon sign in"></i>Log in</a>
+      {% endif %}
+
       </div>
-  </nav>
+    </div>
+  </div>
+

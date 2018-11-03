@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="ui segment teal inverted">
+  <h1 class="ui header aligned center">Delivery Summary</h1>
+  <div class="description">
+    A list of deliveries
+  </div>
+</div>
+
+
+<div class="ui segment">
+
+    <div class="ui fluid search selection dropdown" id="search-select">
+        <input type="hidden" name="country">
+        <i class="ui icon search "></i>
+        <div class="default text">Select study category</div>
+        <div class="menu">
+        {% for log in logs %}
+          {% if loop.changed(log.jirakey)%}
+          <div class="item" data-value="{{log.category}}">{{log.category}}    <i>[for Jira Key {{log.jirakey}}]</i></div>        
+          {% endif %}
+        {% endfor %} 
+      </div>
+       </div>
+
+{% for log in logs %}
+  <p>{{log.filename}}{{log.pathtofile}}{{log.filehash}}{{log.filedescription}}{{log.filecreatedate}}  <a href="http:www.bbc.co.uk">{{log.jirakey}}</a></p>
+{% endfor %}
+</div>
+    
+
+  <div class="ui basic modal" id="mod1">
+    <div class="content">
+      <div class="description">
+          {% include 'includes/_messages.html' %}
+      </div>
+    </div>
+  </div>
+
+  <!--JS SCRIPTS FOR THE SEMANTIC-UI TO WORK AS REQUIRED-->
+  <script type="text/javascript">
+    $('#jiratable').tablesort();
+    $('#studyselect').dropdown();
+    $('#schemasel').dropdown();
+    $('#tablesel').dropdown();
+
+    $('#search-select').dropdown();
+
+    $('#schemasubmit').form('submit');
+    $('#schemaclear').form('clear');
+  </script>  
+  
+{% endblock %}
