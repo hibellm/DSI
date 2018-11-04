@@ -15,8 +15,3 @@ def file_list(path):
         print(file)
 
     return file_list    
-
-
-
-
-x=file_list('.')    

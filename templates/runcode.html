@@ -12,6 +12,7 @@
 <form class="ui form">
     <button class="ui button positive" name="submit" type="submit" value="submit">Run Code</button>
     <button class="ui button"          name="clear"  type="clear"  value="clear">Clear Log</button>
+    <button class="ui button blue "    name="save"   type="save"   value="save">Save Log</button>
 </form>
 <br>
 
@@ -34,7 +35,14 @@
   </div>
 </div>
 
-   
+ 
+<div class="ui basic modal" id="mod1">
+  <div class="content">
+    <div class="description">
+        {% include 'includes/_messages.html' %}
+    </div>
+  </div>
+</div>
 
   <!--JS SCRIPTS FOR THE SEMANTIC-UI TO WORK AS REQUIRED-->
   <script type="text/javascript">

@@ -7,8 +7,6 @@ def list_zip_file(filepath):
 
     return myzip.namelist()
 
-list_zip_file('mjh.zip')
-
 
 #ADD FILE TO A ZIPFILE
 def add_file_to_zip(file,ziparchive,comment=None,pwd=None):
@@ -21,7 +19,7 @@ def add_file_to_zip(file,ziparchive,comment=None,pwd=None):
     myzip.close()
     print(file+' has been added to the zip file: '+ziparchive)
 
-add_file_to_zip('code2run.log','mjh2.zip','code2run added by Marcus')
+#add_file_to_zip('code2run.log','mjh2.zip','code2run added by Marcus')
 
 #EXTRACT FILE(S) FROM ZIPFILE
 def extract_from_zip(filelist='ALL',ziparchive=None,trg_dir='.',pwd=None):
@@ -38,7 +36,7 @@ def extract_from_zip(filelist='ALL',ziparchive=None,trg_dir='.',pwd=None):
     myzip.close()
     print('Extraction has finished')
 
-extract_from_zip('ALL','mjh2.zip','./extract/log')
+#extract_from_zip('ALL','mjh2.zip','./extract/log')
 
 
 

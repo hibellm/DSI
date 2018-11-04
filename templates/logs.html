@@ -9,6 +9,20 @@
 </div>
 
 
+<div class="ui accordion">
+  <div class="title">
+    <i class="ui icon archive"></i>
+    mjh2.zip
+  </div>
+  <div class="content">
+   {% for z in zip %} 
+      <p>{{z}}</p>
+   {% endfor %} 
+   </div>
+</div>
+
+
+
 
 <div class="ui segment green fixed">
   <div id="logfiles">
@@ -27,7 +41,7 @@
 
   <!--JS SCRIPTS FOR THE SEMANTIC-UI TO WORK AS REQUIRED-->
   <script type="text/javascript">
-  
+  $('.ui.accordion').accordion();
   </script>  
   
 {% endblock %}

@@ -15,6 +15,8 @@ from requests.auth import HTTPBasicAuth
 import json
 import os
 import humanize
+from read_zipfile import list_zip_file
+from file_list import file_list
 
 app = Flask(__name__, static_url_path='/assets', static_folder='assets')
 
@@ -37,9 +39,9 @@ mysql = MySQL(app)
 # loggedin = cur.fetchall()
 # print('Logged in as : '+str(loggedin))
 
-print('--------FLASK INFO---------')
-print('CONNECTION TO MYSQL MADE   ')
-print('--------FLASK INFO---------')
+print('------FLASK INFO--------')
+print('CONNECTION TO MYSQL MADE')
+print('------FLASK INFO-------')
 
 
 # FILTERS
@@ -191,8 +193,6 @@ def logout():
 
 
 
-
-
 # SUMMARY
 @app.route('/summary',methods=['GET', 'POST'])
 @is_logged_in
@@ -222,10 +222,14 @@ def summary():
 @app.route('/logs',methods=['GET', 'POST'])
 @is_logged_in
 def logs():
-    
+
+    #FIND THE LIST OF ZIP FILES
+    zip=list_zip_file('mjh2.zip') 
+    print(zip)
+
     # Create cursor
     cur = mysql.connection.cursor()
-
+ 
     #GET SOME VALUES
     #SELECT count(*) FROM dsi.jira group by status order by status desc;
     result = cur.execute("SELECT * FROM dsi.logfiles;")
@@ -234,7 +238,7 @@ def logs():
     
     if result > 0:#SEEMS to only work when I name the vars as a dictionary and not a list I guess
         #print('Result is : '+str(result))
-        return render_template('logs.html', logfiles=logfiles)
+        return render_template('logs.html', logfiles=logfiles,zip=zip)
     else:
         msg = 'Nothing Found...strange'
         return render_template('logs.html', msg=msg)
@@ -405,6 +409,7 @@ def runcode():
     if request.method == 'GET':
         get_log=request.values.get("submit")
         clear_log=request.values.get("clear")
+        save_log=request.values.get("save")
 
         if get_log=='submit':
             code_to_run('code2run.py')                                
@@ -413,25 +418,6 @@ def runcode():
             w=0
             t.sleep(1)
             x,i,e,w=read_log('./code2run.log')
-            # try:
-            #     with open("./code2run.log","r") as logfile:
-            #         #loglines =logfile.readlines()
-            #         loglines=logfile.readlines()
-
-            #         x=list()  
-            #         for item in loglines:
-            #             if item.startswith("INFO"): 
-            #                 i=i+1
-            #                 x.append('<span style="color:blue;">'+str(item[10:])+'</span><br>')
-            #             elif item.startswith("ERROR"): 
-            #                 e=e+1
-            #                 x.append('<span style="color:red;">'+str(item[11:])+'</span><br>')
-            #             elif item.startswith("WARNING"): 
-            #                 w=w+1
-            #                 x.append('<span style="color:teal;">'+str(item[13:])+'</span><br>')
-            # except:
-            #     x=list('<no file found yet>')
-
 
         if clear_log=='clear':
             i=0
@@ -442,7 +428,21 @@ def runcode():
                 os.remove('code2run.log')
             except:
                 print('cant fine the files... oh no!')                
-                
+
+        if save_log=='save':
+            print(e)
+            if e>0:
+                flash('Error found - will not save the log', 'warning')
+            try:
+                import shutil
+                savelog=('code2run.log').split('.')[0]+'_rcr-2_2018.log'
+                print(savelog)
+                shutil.copy('code2run.log', os.path.join('./log',savelog))
+                flash('Log saved as '+savelog, 'success')
+            except:
+                flash('No log file found to save','warning')
+                print('Cant fine the files... oh no!')                
+
     return render_template('runcode.html',loglines=x,i=i,e=e,w=w)
 
 
