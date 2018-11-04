@@ -2,15 +2,18 @@
 
 {% block body %}
 <div class="ui segment teal inverted">
-  <h1 class="ui header aligned center">Delivery Summary</h1>
+  <h1 class="ui header aligned center">Run Code</h1>
   <div class="description">
-    A list of deliveries
+    Run a program and see the log
   </div>
 </div>
 
 
-<div class="ui button grey" id="runcode">Run code</div>
-
+<form class="ui form">
+    <button class="ui button positive" name="submit" type="submit" value="submit">Run Code</button>
+    <button class="ui button"          name="clear"  type="clear"  value="clear">Clear Log</button>
+</form>
+<br>
 
 <div class="ui compact menu">
   <a class="item">

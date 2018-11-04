@@ -31,7 +31,25 @@
       {% for chk in chkfiles %}
       <tr>
         <td><a href="http://www.bbc.co.uk" target='_blank'>{{ chk.jirakey }}</a></td>
-        <td class="left aligned"><div class="ui teal button" data-title="{{chk.filehash}}" data-content="{{chk.filehash}}">{{chk.filename}}</div></td>
+        <td class="left aligned">
+          {% if chk.filecat == 'zip' %}
+          <div class="ui teal button" data-title="{{chk.filehash}}" data-content="{{chk.filehash}}">{{chk.filename}}</div>
+          {% endif %}
+          <div class="ui accordion">
+              {% if chk.filecat == 'zip' %}
+                <div class="title">
+                  <i class="dropdown icon"></i>{{chk.filename}}
+                </div>
+              {% endif %}            
+            <div class="content">
+              <ul>
+                {% if chk.filecat != 'zip' %}
+                  <li>{{chk.filename}} - {{chk.filedescription}}</li>
+                {% endif %}             
+              </ul>
+            </div>
+          </div>
+        </td>
         <td>{{ chk.pathtofile }}</td>        
         <td>{{ chk.filedescription }}</td>
       </tr>  
@@ -43,7 +61,7 @@
   <!--JS SCRIPTS FOR THE SEMANTIC-UI TO WORK AS REQUIRED-->
   <script type="text/javascript">
   $('.ui.checkbox').checkbox()
-
+  $('.ui.accordion').accordion();
   $('.example .teal.button').popup({
       on: 'click'
     });

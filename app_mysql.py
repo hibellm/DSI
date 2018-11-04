@@ -5,6 +5,7 @@ from wtforms.validators import DataRequired
 from passlib.hash import sha256_crypt
 from functools import wraps
 from datetime import datetime, date, time
+import time as t
 from flask_mysqldb import MySQL
 from jinja2 import Environment 
 from jinja2.loaders import FileSystemLoader
@@ -82,6 +83,14 @@ def icon_fmt_ext(filename):
 icontypes = {'mail green': 'Data Request', 'rocket red': 'Internal Data Request', 'question blue': 'Information Request', 'file pdf outline': 'pdf', 'file video outline': '3g2,3gp,3gp2,3gpp,mov,qt', 'file code outline': 'atom,plist,bat,bash,c,cmd,coffee,css,hml,js,json,java,less,markdown,md,php,pl,py,rb,rss,sass,scpt,swift,scss,sh,xml,yml', 'file alternate outline': 'txt', 'film': 'mp4,m4v,ogv,webm', 'globe': 'htm,html,mhtm,mhtml,xhtm,xhtml'}
 
 
+#ASSUMES THE FILE IS WRITTEN TO A LOG FILE
+def code_to_run(file):    
+    proc = subprocess.Popen(
+        ['python',file],             #call something with a lot of output so we can see it            
+        universal_newlines=True,
+        stdout=subprocess.PIPE
+    )
+
 
 # HOME
 @app.route('/')
@@ -110,6 +119,11 @@ def index():
 def about():
     return render_template('about.html')
 
+
+# METRICS
+@app.route('/metrics')
+def metrics():
+    return render_template('metrics.html')
 
 # USER LOGIN
 @app.route('/login', methods=['GET', 'POST'])
@@ -238,7 +252,7 @@ def checks():
 
     #GET SOME VALUES
     #SELECT count(*) FROM dsi.jira group by status order by status desc;
-    result = cur.execute("SELECT * FROM dsi.logfiles;")
+    result = cur.execute("SELECT * FROM dsi.logfiles order by jirakey,filecat;")
     chkfiles = cur.fetchall()
 
     
@@ -351,42 +365,135 @@ def anonymize_schema():
 #             continue
 #         yield line
 
-# def inner2():    
-#     proc = subprocess.Popen(
-#         ['python','code2run.py'],             #call something with a lot of output so we can see it            
-#         universal_newlines=True,
-#         stdout=subprocess.PIPE
-#     )
 
 #     for line in iter(proc.stdout.readline,''):
 #         time.sleep(0.1)                           # Don't need this just shows the text streaming
 #         yield line.rstrip() + '<br/>\n'
 #     inner2()
 
-@app.route('/wip',methods=['GET', 'POST'])
+def read_log(logname):
+    info=0
+    error=0
+    warn=0    
+    try:
+        with open(os.path.join(".",logname),"r") as logfile:
+            loglines=logfile.readlines()
+
+            log=list()  
+            for item in loglines:
+                if item.startswith("INFO"): 
+                    info=info+1
+                    log.append('<span style="color:blue;">'+str(item[10:])+'</span><br>')
+                elif item.startswith("ERROR"): 
+                    error=error+1
+                    log.append('<span style="color:red;">'+str(item[11:])+'</span><br>')
+                elif item.startswith("WARNING"): 
+                    warn=warn+1
+                    log.append('<span style="color:teal;">'+str(item[13:])+'</span><br>')
+    except:
+        log=['No file found yet!']
+
+    return log,info,error,warn    
+
+@app.route('/runcode',methods=['GET', 'POST'])
 @is_logged_in
-def wip():
-    
+def runcode():
+    x=['No file found yet!']
     i=0
     e=0
     w=0
-    with open("./code2run.log","r") as logfile:
-        #loglines =logfile.readlines()
-        loglines=logfile.readlines()
+    if request.method == 'GET':
+        get_log=request.values.get("submit")
+        clear_log=request.values.get("clear")
 
-        x=list()  
-        for item in loglines:
-            if item.startswith("INFO"): 
-                i=i+1
-                x.append('<span style="color:blue;">'+str(item[10:])+'</span><br>')
-            elif item.startswith("ERROR"): 
-                e=e+1
-                x.append('<span style="color:red;">'+str(item[11:])+'</span><br>')
-            elif item.startswith("WARNING"): 
-                w=w+1
-                x.append('<span style="color:teal;">'+str(item[13:])+'</span><br>')
- 
-    return render_template('wip.html',loglines=x,i=i,e=e,w=w)
+        if get_log=='submit':
+            code_to_run('code2run.py')                                
+            i=0
+            e=0
+            w=0
+            t.sleep(1)
+            x,i,e,w=read_log('./code2run.log')
+            # try:
+            #     with open("./code2run.log","r") as logfile:
+            #         #loglines =logfile.readlines()
+            #         loglines=logfile.readlines()
+
+            #         x=list()  
+            #         for item in loglines:
+            #             if item.startswith("INFO"): 
+            #                 i=i+1
+            #                 x.append('<span style="color:blue;">'+str(item[10:])+'</span><br>')
+            #             elif item.startswith("ERROR"): 
+            #                 e=e+1
+            #                 x.append('<span style="color:red;">'+str(item[11:])+'</span><br>')
+            #             elif item.startswith("WARNING"): 
+            #                 w=w+1
+            #                 x.append('<span style="color:teal;">'+str(item[13:])+'</span><br>')
+            # except:
+            #     x=list('<no file found yet>')
+
+
+        if clear_log=='clear':
+            i=0
+            e=0
+            w=0
+            x=['No file found yet!']
+            try:
+                os.remove('code2run.log')
+            except:
+                print('cant fine the files... oh no!')                
+                
+    return render_template('runcode.html',loglines=x,i=i,e=e,w=w)
+
+
+
+
+
+
+# @app.route('/wip',methods=['GET', 'POST'])
+# @is_logged_in
+# def wip():
+    
+#     if request.method == 'GET':
+#         get_log=request.values.get("submit")
+#         clear_log=request.values.get("clear")
+
+#         if get_log=='submit':
+#             code_to_run('code2run.py')                                
+
+#         if clear_log=='clear':
+#             try:
+#                 os.remove('code2run.log')
+#             except:
+#                 print('cant fine the files... oh no!')                
+            
+    
+#     i=0
+#     e=0
+#     w=0
+#     try:
+#         with open("./code2run.log","r") as logfile:
+#             #loglines =logfile.readlines()
+#             loglines=logfile.readlines()
+
+#             x=list()  
+#             for item in loglines:
+#                 if item.startswith("INFO"): 
+#                     i=i+1
+#                     x.append('<span style="color:blue;">'+str(item[10:])+'</span><br>')
+#                 elif item.startswith("ERROR"): 
+#                     e=e+1
+#                     x.append('<span style="color:red;">'+str(item[11:])+'</span><br>')
+#                 elif item.startswith("WARNING"): 
+#                     w=w+1
+#                     x.append('<span style="color:teal;">'+str(item[13:])+'</span><br>')
+#     except:
+#         x=list('<no file found yet>')
+#     return render_template('wip.html',loglines=x,i=i,e=e,w=w)
+
+
+
+
 
 
 # Vendors
