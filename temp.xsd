@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="document" type="main:documentType" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+  <xs:complexType name="pStyleType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="val" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="pPrType">
+    <xs:sequence>
+      <xs:element type="main:pStyleType" name="pStyle" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+      <xs:element type="main:shdType" name="shd" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+      <xs:element type="main:tabsType" name="tabs" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+      <xs:element type="main:spacingType" name="spacing" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+      <xs:element type="main:textAlignmentType" name="textAlignment" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+      <xs:element type="main:rPrType" name="rPr" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="rType">
+    <xs:sequence>
+      <xs:element type="main:rPrType" name="rPr" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+      <xs:element name="t" minOccurs="0">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute ref="xml:space"/>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element type="main:brType" name="br" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="rsidRPr" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="pType">
+    <xs:sequence>
+      <xs:element type="main:pPrType" name="pPr" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+      <xs:element type="main:rType" name="r" maxOccurs="unbounded" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+      <xs:element type="main:bookmarkStartType" name="bookmarkStart" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+      <xs:element type="main:bookmarkEndType" name="bookmarkEnd" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="rsidR" use="optional"/>
+    <xs:attribute type="xs:string" name="rsidRDefault" use="optional"/>
+    <xs:attribute type="xs:string" name="rsidP" use="optional"/>
+    <xs:attribute type="xs:string" name="rsidRPr" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="tType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute ref="xml:space"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="rPrType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="b" minOccurs="0"/>
+      <xs:element type="xs:string" name="i" minOccurs="0"/>
+      <xs:element type="main:rFontsType" name="rFonts" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+      <xs:element type="main:colorType" name="color" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+      <xs:element type="main:szType" name="sz" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+      <xs:element type="main:szCsType" name="szCs" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+      <xs:element type="main:bdrType" name="bdr" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+      <xs:element type="main:shdType" name="shd" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+      <xs:element type="main:langType" name="lang" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="shdType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="val" use="optional"/>
+        <xs:attribute type="xs:string" name="color" use="optional"/>
+        <xs:attribute type="xs:string" name="fill" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="spacingType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="after" use="optional"/>
+        <xs:attribute type="xs:string" name="line" use="optional"/>
+        <xs:attribute type="xs:string" name="lineRule" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="rFontsType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="ascii" use="optional"/>
+        <xs:attribute type="xs:string" name="eastAsia" use="optional"/>
+        <xs:attribute type="xs:string" name="hAnsi" use="optional"/>
+        <xs:attribute type="xs:string" name="cs" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="colorType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="val" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="szType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="val" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="szCsType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="val" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="langType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="val" use="optional"/>
+        <xs:attribute type="xs:string" name="eastAsia" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="tabType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="val" use="optional"/>
+        <xs:attribute type="xs:string" name="pos" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="tabsType">
+    <xs:sequence>
+      <xs:element type="main:tabType" name="tab" maxOccurs="unbounded" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="textAlignmentType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="val" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="bdrType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="val" use="optional"/>
+        <xs:attribute type="xs:string" name="sz" use="optional"/>
+        <xs:attribute type="xs:string" name="space" use="optional"/>
+        <xs:attribute type="xs:string" name="color" use="optional"/>
+        <xs:attribute type="xs:string" name="frame" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="bookmarkStartType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="id"/>
+        <xs:attribute type="xs:string" name="name"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="bookmarkEndType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="id"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="tblWType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="w"/>
+        <xs:attribute type="xs:string" name="type"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="tblLookType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="val"/>
+        <xs:attribute type="xs:string" name="firstRow"/>
+        <xs:attribute type="xs:string" name="lastRow"/>
+        <xs:attribute type="xs:string" name="firstColumn"/>
+        <xs:attribute type="xs:string" name="lastColumn"/>
+        <xs:attribute type="xs:string" name="noHBand"/>
+        <xs:attribute type="xs:string" name="noVBand"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="tblPrType">
+    <xs:sequence>
+      <xs:element type="main:tblWType" name="tblW" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+      <xs:element type="main:tblLookType" name="tblLook" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="gridColType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="w" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="tblGridType">
+    <xs:sequence>
+      <xs:element type="main:gridColType" name="gridCol" maxOccurs="unbounded" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tcWType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="w" use="optional"/>
+        <xs:attribute type="xs:string" name="type" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="tcPrType">
+    <xs:sequence>
+      <xs:element type="main:tcWType" name="tcW" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tcType">
+    <xs:sequence>
+      <xs:element type="main:tcPrType" name="tcPr" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+      <xs:element type="main:pType" name="p" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="trType">
+    <xs:sequence>
+      <xs:element type="main:tcType" name="tc" maxOccurs="unbounded" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="rsidR" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="tblType">
+    <xs:sequence>
+      <xs:element type="main:tblPrType" name="tblPr" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+      <xs:element type="main:tblGridType" name="tblGrid" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+      <xs:element type="main:trType" name="tr" maxOccurs="unbounded" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+      <xs:element type="main:pPrType" name="pPr" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+      <xs:element type="main:rType" name="r" maxOccurs="unbounded" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+      <xs:element type="main:bookmarkStartType" name="bookmarkStart" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+      <xs:element type="main:bookmarkEndType" name="bookmarkEnd" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="rsidR" use="optional"/>
+    <xs:attribute type="xs:string" name="rsidRDefault" use="optional"/>
+    <xs:attribute type="xs:string" name="rsidP" use="optional"/>
+    <xs:attribute type="xs:string" name="rsidRPr" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="brType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="type"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="pgSzType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="w"/>
+        <xs:attribute type="xs:string" name="h"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="pgMarType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="top"/>
+        <xs:attribute type="xs:string" name="right"/>
+        <xs:attribute type="xs:string" name="bottom"/>
+        <xs:attribute type="xs:string" name="left"/>
+        <xs:attribute type="xs:string" name="header"/>
+        <xs:attribute type="xs:string" name="footer"/>
+        <xs:attribute type="xs:string" name="gutter"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="colsType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="space"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="docGridType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="linePitch"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="sectPrType">
+    <xs:sequence>
+      <xs:element type="main:pgSzType" name="pgSz" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+      <xs:element type="main:pgMarType" name="pgMar" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+      <xs:element type="main:colsType" name="cols" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+      <xs:element type="main:docGridType" name="docGrid" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="rsidR"/>
+    <xs:attribute type="xs:string" name="rsidSect"/>
+  </xs:complexType>
+  <xs:complexType name="bodyType">
+    <xs:choice maxOccurs="unbounded" minOccurs="0">
+      <xs:element type="main:pType" name="p" maxOccurs="unbounded" minOccurs="0" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+      <xs:element type="main:tblType" name="tbl" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+      <xs:element type="main:sectPrType" name="sectPr" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="documentType">
+    <xs:sequence>
+      <xs:element type="main:bodyType" name="body" xmlns:main="http://schemas.openxmlformats.org/wordprocessingml/2006/main"/>
+    </xs:sequence>
+    <xs:attribute ref="ns:Ignorable" xmlns:ns="http://schemas.openxmlformats.org/markup-compatibility/2006"/>
+  </xs:complexType>
+</xs:schema>

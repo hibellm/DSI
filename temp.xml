@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE w:document [
+        <!ELEMENT w:document (w:body)*>
+        <!ATTLIST w:document
+                xmlns:wpc CDATA #REQUIRED
+                xmlns:mc CDATA #REQUIRED
+                xmlns:o CDATA #REQUIRED
+                xmlns:r CDATA #REQUIRED
+                xmlns:m CDATA #REQUIRED
+                xmlns:v CDATA #REQUIRED
+                xmlns:wp14 CDATA #REQUIRED
+                xmlns:wp CDATA #REQUIRED
+                xmlns:w10 CDATA #REQUIRED
+                xmlns:w CDATA #REQUIRED
+                xmlns:w14 CDATA #REQUIRED
+                xmlns:wpg CDATA #REQUIRED
+                xmlns:wpi CDATA #REQUIRED
+                xmlns:wne CDATA #REQUIRED
+                xmlns:wps CDATA #REQUIRED
+                mc:Ignorable CDATA #REQUIRED>
+        <!ELEMENT w:body (w:p|w:tbl|w:sectPr)*>
+        <!ELEMENT w:p (w:pPr|w:r|w:bookmarkStart|w:bookmarkEnd)*>
+        <!ATTLIST w:p
+                w:rsidP CDATA #IMPLIED
+                w:rsidR CDATA #REQUIRED
+                w:rsidRDefault CDATA #REQUIRED
+                w:rsidRPr CDATA #IMPLIED>
+        <!ELEMENT w:pPr (w:pStyle|w:shd|w:spacing|w:rPr|w:tabs|w:textAlignment)*>
+        <!ELEMENT w:pStyle (#PCDATA)>
+        <!ATTLIST w:pStyle
+                w:val CDATA #REQUIRED>
+        <!ELEMENT w:r (w:t|w:rPr|w:br)*>
+        <!ATTLIST w:r
+                w:rsidRPr CDATA #IMPLIED>
+        <!ELEMENT w:t (#PCDATA)>
+        <!ATTLIST w:t
+                xml:space CDATA #IMPLIED>
+        <!ELEMENT w:rPr (w:b|w:i|w:rFonts|w:color|w:sz|w:szCs|w:lang|w:bdr|w:shd)*>
+        <!ELEMENT w:b (#PCDATA)>
+        <!ELEMENT w:i (#PCDATA)>
+        <!ELEMENT w:shd (#PCDATA)>
+        <!ATTLIST w:shd
+                w:color CDATA #REQUIRED
+                w:fill CDATA #REQUIRED
+                w:val CDATA #REQUIRED>
+        <!ELEMENT w:spacing (#PCDATA)>
+        <!ATTLIST w:spacing
+                w:after CDATA #REQUIRED
+                w:line CDATA #REQUIRED
+                w:lineRule CDATA #REQUIRED>
+        <!ELEMENT w:rFonts (#PCDATA)>
+        <!ATTLIST w:rFonts
+                w:ascii CDATA #REQUIRED
+                w:cs CDATA #REQUIRED
+                w:eastAsia CDATA #REQUIRED
+                w:hAnsi CDATA #REQUIRED>
+        <!ELEMENT w:color (#PCDATA)>
+        <!ATTLIST w:color
+                w:val CDATA #REQUIRED>
+        <!ELEMENT w:sz (#PCDATA)>
+        <!ATTLIST w:sz
+                w:val CDATA #REQUIRED>
+        <!ELEMENT w:szCs (#PCDATA)>
+        <!ATTLIST w:szCs
+                w:val CDATA #REQUIRED>
+        <!ELEMENT w:lang (#PCDATA)>
+        <!ATTLIST w:lang
+                w:eastAsia CDATA #REQUIRED
+                w:val CDATA #REQUIRED>
+        <!ELEMENT w:tabs (w:tab)*>
+        <!ELEMENT w:tab (#PCDATA)>
+        <!ATTLIST w:tab
+                w:pos CDATA #REQUIRED
+                w:val CDATA #REQUIRED>
+        <!ELEMENT w:textAlignment (#PCDATA)>
+        <!ATTLIST w:textAlignment
+                w:val CDATA #REQUIRED>
+        <!ELEMENT w:bdr (#PCDATA)>
+        <!ATTLIST w:bdr
+                w:color CDATA #REQUIRED
+                w:frame CDATA #REQUIRED
+                w:space CDATA #REQUIRED
+                w:sz CDATA #REQUIRED
+                w:val CDATA #REQUIRED>
+        <!ELEMENT w:bookmarkStart (#PCDATA)>
+        <!ATTLIST w:bookmarkStart
+                w:id CDATA #REQUIRED
+                w:name CDATA #REQUIRED>
+        <!ELEMENT w:bookmarkEnd (#PCDATA)>
+        <!ATTLIST w:bookmarkEnd
+                w:id CDATA #REQUIRED>
+        <!ELEMENT w:tbl (w:tblPr|w:tblGrid|w:tr)*>
+        <!ELEMENT w:tblPr (w:tblW|w:tblLook)*>
+        <!ELEMENT w:tblW (#PCDATA)>
+        <!ATTLIST w:tblW
+                w:w CDATA #REQUIRED
+                w:type CDATA #REQUIRED>
+        <!ELEMENT w:tblLook (#PCDATA)>
+        <!ATTLIST w:tblLook
+                w:val CDATA #REQUIRED
+                w:firstRow CDATA #REQUIRED
+                w:lastRow CDATA #REQUIRED
+                w:firstColumn CDATA #REQUIRED
+                w:lastColumn CDATA #REQUIRED
+                w:noHBand CDATA #REQUIRED
+                w:noVBand CDATA #REQUIRED>
+        <!ELEMENT w:tblGrid (w:gridCol)*>
+        <!ELEMENT w:gridCol (#PCDATA)>
+        <!ATTLIST w:gridCol
+                w:w CDATA #REQUIRED>
+        <!ELEMENT w:tr (w:tc)*>
+        <!ATTLIST w:tr
+                w:rsidR CDATA #REQUIRED>
+        <!ELEMENT w:tc (w:tcPr|w:p)*>
+        <!ELEMENT w:tcPr (w:tcW)*>
+        <!ELEMENT w:tcW (#PCDATA)>
+        <!ATTLIST w:tcW
+                w:type CDATA #REQUIRED
+                w:w CDATA #REQUIRED>
+        <!ELEMENT w:br (#PCDATA)>
+        <!ATTLIST w:br
+                w:type CDATA #REQUIRED>
+        <!ELEMENT w:sectPr (w:pgSz|w:pgMar|w:cols|w:docGrid)*>
+        <!ATTLIST w:sectPr
+                w:rsidR CDATA #REQUIRED
+                w:rsidSect CDATA #REQUIRED>
+        <!ELEMENT w:pgSz (#PCDATA)>
+        <!ATTLIST w:pgSz
+                w:w CDATA #REQUIRED
+                w:h CDATA #REQUIRED>
+        <!ELEMENT w:pgMar (#PCDATA)>
+        <!ATTLIST w:pgMar
+                w:top CDATA #REQUIRED
+                w:right CDATA #REQUIRED
+                w:bottom CDATA #REQUIRED
+                w:left CDATA #REQUIRED
+                w:header CDATA #REQUIRED
+                w:footer CDATA #REQUIRED
+                w:gutter CDATA #REQUIRED>
+        <!ELEMENT w:cols (#PCDATA)>
+        <!ATTLIST w:cols
+                w:space CDATA #REQUIRED>
+        <!ELEMENT w:docGrid (#PCDATA)>
+        <!ATTLIST w:docGrid
+                w:linePitch CDATA #REQUIRED>
+        ]>
+<w:document xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape" mc:Ignorable="w14 wp14"><w:body><w:p w:rsidR="00450982" w:rsidRDefault="00203710"><w:pPr><w:pStyle w:val="Title"/></w:pPr><w:r><w:t>Document Title</w:t></w:r></w:p><w:p w:rsidR="00203710" w:rsidRDefault="00203710" w:rsidP="00203710"><w:r><w:t xml:space="preserve">A plain paragraph having some </w:t></w:r><w:r><w:rPr><w:b/></w:rPr><w:t>bold</w:t></w:r><w:r><w:t xml:space="preserve"> and some </w:t></w:r><w:r><w:rPr><w:i/></w:rPr><w:t>italic.</w:t></w:r></w:p><w:p w:rsidR="00203710" w:rsidRDefault="00203710" w:rsidP="00203710"><w:pPr><w:shd w:val="clear" w:color="auto" w:fill="1E1E1E"/><w:spacing w:after="0" w:line="285" w:lineRule="atLeast"/><w:rPr><w:rFonts w:ascii="Consolas" w:eastAsia="Times New Roman" w:hAnsi="Consolas" w:cs="Consolas"/><w:color w:val="D4D4D4"/><w:sz w:val="21"/><w:szCs w:val="21"/><w:lang w:val="en-GB" w:eastAsia="en-GB"/></w:rPr></w:pPr><w:r><w:rPr><w:rFonts w:ascii="Consolas" w:eastAsia="Times New Roman" w:hAnsi="Consolas" w:cs="Consolas"/><w:color w:val="CE9178"/><w:sz w:val="21"/><w:szCs w:val="21"/><w:lang w:val="en-GB" w:eastAsia="en-GB"/></w:rPr><w:t>Joe Bob</w:t></w:r></w:p><w:p w:rsidR="00203710" w:rsidRDefault="00203710" w:rsidP="00203710"><w:pPr><w:shd w:val="clear" w:color="auto" w:fill="EFF0F1"/><w:tabs><w:tab w:val="left" w:pos="916"/><w:tab w:val="left" w:pos="1832"/><w:tab w:val="left" w:pos="2748"/><w:tab w:val="left" w:pos="3664"/><w:tab w:val="left" w:pos="4580"/><w:tab w:val="left" w:pos="5496"/><w:tab w:val="left" w:pos="6412"/><w:tab w:val="left" w:pos="7328"/><w:tab w:val="left" w:pos="8244"/><w:tab w:val="left" w:pos="9160"/><w:tab w:val="left" w:pos="10076"/><w:tab w:val="left" w:pos="10992"/><w:tab w:val="left" w:pos="11908"/><w:tab w:val="left" w:pos="12824"/><w:tab w:val="left" w:pos="13740"/><w:tab w:val="left" w:pos="14656"/></w:tabs><w:spacing w:after="0" w:line="240" w:lineRule="auto"/><w:textAlignment w:val="baseline"/><w:rPr><w:rFonts w:ascii="inherit" w:eastAsia="Times New Roman" w:hAnsi="inherit" w:cs="Consolas"/><w:color w:val="7D2727"/><w:sz w:val="20"/><w:szCs w:val="20"/><w:bdr w:val="none" w:sz="0" w:space="0" w:color="auto" w:frame="1"/><w:shd w:val="clear" w:color="auto" w:fill="EFF0F1"/><w:lang w:val="en-GB" w:eastAsia="en-GB"/></w:rPr></w:pPr><w:r><w:rPr><w:rFonts w:ascii="inherit" w:eastAsia="Times New Roman" w:hAnsi="inherit" w:cs="Consolas"/><w:color w:val="7D2727"/><w:sz w:val="20"/><w:szCs w:val="20"/><w:bdr w:val="none" w:sz="0" w:space="0" w:color="auto" w:frame="1"/><w:shd w:val="clear" w:color="auto" w:fill="EFF0F1"/><w:lang w:val="en-GB" w:eastAsia="en-GB"/></w:rPr><w:t>May 31, 2013</w:t></w:r></w:p><w:p w:rsidR="000438B5" w:rsidRDefault="000438B5" w:rsidP="00203710"><w:pPr><w:shd w:val="clear" w:color="auto" w:fill="EFF0F1"/><w:tabs><w:tab w:val="left" w:pos="916"/><w:tab w:val="left" w:pos="1832"/><w:tab w:val="left" w:pos="2748"/><w:tab w:val="left" w:pos="3664"/><w:tab w:val="left" w:pos="4580"/><w:tab w:val="left" w:pos="5496"/><w:tab w:val="left" w:pos="6412"/><w:tab w:val="left" w:pos="7328"/><w:tab w:val="left" w:pos="8244"/><w:tab w:val="left" w:pos="9160"/><w:tab w:val="left" w:pos="10076"/><w:tab w:val="left" w:pos="10992"/><w:tab w:val="left" w:pos="11908"/><w:tab w:val="left" w:pos="12824"/><w:tab w:val="left" w:pos="13740"/><w:tab w:val="left" w:pos="14656"/></w:tabs><w:spacing w:after="0" w:line="240" w:lineRule="auto"/><w:textAlignment w:val="baseline"/><w:rPr><w:rFonts w:ascii="inherit" w:eastAsia="Times New Roman" w:hAnsi="inherit" w:cs="Consolas"/><w:color w:val="7D2727"/><w:sz w:val="20"/><w:szCs w:val="20"/><w:bdr w:val="none" w:sz="0" w:space="0" w:color="auto" w:frame="1"/><w:shd w:val="clear" w:color="auto" w:fill="EFF0F1"/><w:lang w:val="en-GB" w:eastAsia="en-GB"/></w:rPr></w:pPr></w:p><w:p w:rsidR="000438B5" w:rsidRPr="000438B5" w:rsidRDefault="000438B5" w:rsidP="000438B5"><w:pPr><w:pStyle w:val="Heading1"/></w:pPr><w:r w:rsidRPr="000438B5"><w:t>Th</w:t></w:r><w:r><w:t>ese</w:t></w:r><w:r w:rsidRPr="000438B5"><w:t xml:space="preserve"> </w:t></w:r><w:r><w:t>are</w:t></w:r><w:r w:rsidRPr="000438B5"><w:t xml:space="preserve"> Example Patient Narative</w:t></w:r><w:r><w:t>s</w:t></w:r></w:p><w:p w:rsidR="000438B5" w:rsidRDefault="000438B5" w:rsidP="00203710"><w:pPr><w:shd w:val="clear" w:color="auto" w:fill="EFF0F1"/><w:tabs><w:tab w:val="left" w:pos="916"/><w:tab w:val="left" w:pos="1832"/><w:tab w:val="left" w:pos="2748"/><w:tab w:val="left" w:pos="3664"/><w:tab w:val="left" w:pos="4580"/><w:tab w:val="left" w:pos="5496"/><w:tab w:val="left" w:pos="6412"/><w:tab w:val="left" w:pos="7328"/><w:tab w:val="left" w:pos="8244"/><w:tab w:val="left" w:pos="9160"/><w:tab w:val="left" w:pos="10076"/><w:tab w:val="left" w:pos="10992"/><w:tab w:val="left" w:pos="11908"/><w:tab w:val="left" w:pos="12824"/><w:tab w:val="left" w:pos="13740"/><w:tab w:val="left" w:pos="14656"/></w:tabs><w:spacing w:after="0" w:line="240" w:lineRule="auto"/><w:textAlignment w:val="baseline"/><w:rPr><w:rFonts w:ascii="inherit" w:eastAsia="Times New Roman" w:hAnsi="inherit" w:cs="Consolas"/><w:color w:val="7D2727"/><w:sz w:val="20"/><w:szCs w:val="20"/><w:bdr w:val="none" w:sz="0" w:space="0" w:color="auto" w:frame="1"/><w:shd w:val="clear" w:color="auto" w:fill="EFF0F1"/><w:lang w:val="en-GB" w:eastAsia="en-GB"/></w:rPr></w:pPr></w:p><w:p w:rsidR="000438B5" w:rsidRDefault="000438B5" w:rsidP="00203710"><w:pPr><w:shd w:val="clear" w:color="auto" w:fill="EFF0F1"/><w:tabs><w:tab w:val="left" w:pos="916"/><w:tab w:val="left" w:pos="1832"/><w:tab w:val="left" w:pos="2748"/><w:tab w:val="left" w:pos="3664"/><w:tab w:val="left" w:pos="4580"/><w:tab w:val="left" w:pos="5496"/><w:tab w:val="left" w:pos="6412"/><w:tab w:val="left" w:pos="7328"/><w:tab w:val="left" w:pos="8244"/><w:tab w:val="left" w:pos="9160"/><w:tab w:val="left" w:pos="10076"/><w:tab w:val="left" w:pos="10992"/><w:tab w:val="left" w:pos="11908"/><w:tab w:val="left" w:pos="12824"/><w:tab w:val="left" w:pos="13740"/><w:tab w:val="left" w:pos="14656"/></w:tabs><w:spacing w:after="0" w:line="240" w:lineRule="auto"/><w:textAlignment w:val="baseline"/><w:rPr><w:rFonts w:ascii="inherit" w:eastAsia="Times New Roman" w:hAnsi="inherit" w:cs="Consolas"/><w:color w:val="7D2727"/><w:sz w:val="20"/><w:szCs w:val="20"/><w:bdr w:val="none" w:sz="0" w:space="0" w:color="auto" w:frame="1"/><w:shd w:val="clear" w:color="auto" w:fill="EFF0F1"/><w:lang w:val="en-GB" w:eastAsia="en-GB"/></w:rPr></w:pPr></w:p><w:p w:rsidR="000438B5" w:rsidRDefault="000438B5" w:rsidP="000438B5"><w:pPr><w:shd w:val="clear" w:color="auto" w:fill="EFF0F1"/><w:tabs><w:tab w:val="left" w:pos="916"/><w:tab w:val="left" w:pos="1832"/><w:tab w:val="left" w:pos="2748"/><w:tab w:val="left" w:pos="3664"/><w:tab w:val="left" w:pos="4580"/><w:tab w:val="left" w:pos="5496"/><w:tab w:val="left" w:pos="6412"/><w:tab w:val="left" w:pos="7328"/><w:tab w:val="left" w:pos="8244"/><w:tab w:val="left" w:pos="9160"/><w:tab w:val="left" w:pos="10076"/><w:tab w:val="left" w:pos="10992"/><w:tab w:val="left" w:pos="11908"/><w:tab w:val="left" w:pos="12824"/><w:tab w:val="left" w:pos="13740"/><w:tab w:val="left" w:pos="14656"/></w:tabs><w:spacing w:after="0" w:line="240" w:lineRule="auto"/><w:textAlignment w:val="baseline"/><w:rPr><w:rFonts w:ascii="inherit" w:eastAsia="Times New Roman" w:hAnsi="inherit" w:cs="Consolas"/><w:color w:val="7D2727"/><w:sz w:val="20"/><w:szCs w:val="20"/><w:bdr w:val="none" w:sz="0" w:space="0" w:color="auto" w:frame="1"/><w:shd w:val="clear" w:color="auto" w:fill="EFF0F1"/><w:lang w:val="en-GB" w:eastAsia="en-GB"/></w:rPr></w:pPr><w:r><w:rPr><w:rFonts w:ascii="inherit" w:eastAsia="Times New Roman" w:hAnsi="inherit" w:cs="Consolas"/><w:color w:val="7D2727"/><w:sz w:val="20"/><w:szCs w:val="20"/><w:bdr w:val="none" w:sz="0" w:space="0" w:color="auto" w:frame="1"/><w:shd w:val="clear" w:color="auto" w:fill="EFF0F1"/><w:lang w:val="en-GB" w:eastAsia="en-GB"/></w:rPr><w:t>Patient 101</w:t></w:r></w:p><w:p w:rsidR="000438B5" w:rsidRDefault="000438B5" w:rsidP="000438B5"><w:pPr><w:shd w:val="clear" w:color="auto" w:fill="EFF0F1"/><w:tabs><w:tab w:val="left" w:pos="916"/><w:tab w:val="left" w:pos="1832"/><w:tab w:val="left" w:pos="2748"/><w:tab w:val="left" w:pos="3664"/><w:tab w:val="left" w:pos="4580"/><w:tab w:val="left" w:pos="5496"/><w:tab w:val="left" w:pos="6412"/><w:tab w:val="left" w:pos="7328"/><w:tab w:val="left" w:pos="8244"/><w:tab w:val="left" w:pos="9160"/><w:tab w:val="left" w:pos="10076"/><w:tab w:val="left" w:pos="10992"/><w:tab w:val="left" w:pos="11908"/><w:tab w:val="left" w:pos="12824"/><w:tab w:val="left" w:pos="13740"/><w:tab w:val="left" w:pos="14656"/></w:tabs><w:spacing w:after="0" w:line="240" w:lineRule="auto"/><w:textAlignment w:val="baseline"/><w:rPr><w:rFonts w:ascii="inherit" w:eastAsia="Times New Roman" w:hAnsi="inherit" w:cs="Consolas"/><w:color w:val="7D2727"/><w:sz w:val="20"/><w:szCs w:val="20"/><w:bdr w:val="none" w:sz="0" w:space="0" w:color="auto" w:frame="1"/><w:shd w:val="clear" w:color="auto" w:fill="EFF0F1"/><w:lang w:val="en-GB" w:eastAsia="en-GB"/></w:rPr></w:pPr><w:r><w:rPr><w:rFonts w:ascii="inherit" w:eastAsia="Times New Roman" w:hAnsi="inherit" w:cs="Consolas"/><w:color w:val="7D2727"/><w:sz w:val="20"/><w:szCs w:val="20"/><w:bdr w:val="none" w:sz="0" w:space="0" w:color="auto" w:frame="1"/><w:shd w:val="clear" w:color="auto" w:fill="EFF0F1"/><w:lang w:val="en-GB" w:eastAsia="en-GB"/></w:rPr><w:t>This Patient was called Ted and was born on 01 January 2018, and had a headache so got some consultation from professor X.</w:t></w:r></w:p><w:p w:rsidR="000438B5" w:rsidRDefault="000438B5" w:rsidP="00203710"><w:pPr><w:shd w:val="clear" w:color="auto" w:fill="EFF0F1"/><w:tabs><w:tab w:val="left" w:pos="916"/><w:tab w:val="left" w:pos="1832"/><w:tab w:val="left" w:pos="2748"/><w:tab w:val="left" w:pos="3664"/><w:tab w:val="left" w:pos="4580"/><w:tab w:val="left" w:pos="5496"/><w:tab w:val="left" w:pos="6412"/><w:tab w:val="left" w:pos="7328"/><w:tab w:val="left" w:pos="8244"/><w:tab w:val="left" w:pos="9160"/><w:tab w:val="left" w:pos="10076"/><w:tab w:val="left" w:pos="10992"/><w:tab w:val="left" w:pos="11908"/><w:tab w:val="left" w:pos="12824"/><w:tab w:val="left" w:pos="13740"/><w:tab w:val="left" w:pos="14656"/></w:tabs><w:spacing w:after="0" w:line="240" w:lineRule="auto"/><w:textAlignment w:val="baseline"/><w:rPr><w:rFonts w:ascii="inherit" w:eastAsia="Times New Roman" w:hAnsi="inherit" w:cs="Consolas"/><w:color w:val="7D2727"/><w:sz w:val="20"/><w:szCs w:val="20"/><w:bdr w:val="none" w:sz="0" w:space="0" w:color="auto" w:frame="1"/><w:shd w:val="clear" w:color="auto" w:fill="EFF0F1"/><w:lang w:val="en-GB" w:eastAsia="en-GB"/></w:rPr></w:pPr></w:p><w:p w:rsidR="000438B5" w:rsidRDefault="000438B5" w:rsidP="000438B5"><w:pPr><w:shd w:val="clear" w:color="auto" w:fill="EFF0F1"/><w:tabs><w:tab w:val="left" w:pos="916"/><w:tab w:val="left" w:pos="1832"/><w:tab w:val="left" w:pos="2748"/><w:tab w:val="left" w:pos="3664"/><w:tab w:val="left" w:pos="4580"/><w:tab w:val="left" w:pos="5496"/><w:tab w:val="left" w:pos="6412"/><w:tab w:val="left" w:pos="7328"/><w:tab w:val="left" w:pos="8244"/><w:tab w:val="left" w:pos="9160"/><w:tab w:val="left" w:pos="10076"/><w:tab w:val="left" w:pos="10992"/><w:tab w:val="left" w:pos="11908"/><w:tab w:val="left" w:pos="12824"/><w:tab w:val="left" w:pos="13740"/><w:tab w:val="left" w:pos="14656"/></w:tabs><w:spacing w:after="0" w:line="240" w:lineRule="auto"/><w:textAlignment w:val="baseline"/><w:rPr><w:rFonts w:ascii="inherit" w:eastAsia="Times New Roman" w:hAnsi="inherit" w:cs="Consolas"/><w:color w:val="7D2727"/><w:sz w:val="20"/><w:szCs w:val="20"/><w:bdr w:val="none" w:sz="0" w:space="0" w:color="auto" w:frame="1"/><w:shd w:val="clear" w:color="auto" w:fill="EFF0F1"/><w:lang w:val="en-GB" w:eastAsia="en-GB"/></w:rPr></w:pPr><w:r><w:rPr><w:rFonts w:ascii="inherit" w:eastAsia="Times New Roman" w:hAnsi="inherit" w:cs="Consolas"/><w:color w:val="7D2727"/><w:sz w:val="20"/><w:szCs w:val="20"/><w:bdr w:val="none" w:sz="0" w:space="0" w:color="auto" w:frame="1"/><w:shd w:val="clear" w:color="auto" w:fill="EFF0F1"/><w:lang w:val="en-GB" w:eastAsia="en-GB"/></w:rPr><w:t>Patient 1</w:t></w:r><w:r><w:rPr><w:rFonts w:ascii="inherit" w:eastAsia="Times New Roman" w:hAnsi="inherit" w:cs="Consolas"/><w:color w:val="7D2727"/><w:sz w:val="20"/><w:szCs w:val="20"/><w:bdr w:val="none" w:sz="0" w:space="0" w:color="auto" w:frame="1"/><w:shd w:val="clear" w:color="auto" w:fill="EFF0F1"/><w:lang w:val="en-GB" w:eastAsia="en-GB"/></w:rPr><w:t>2</w:t></w:r><w:r><w:rPr><w:rFonts w:ascii="inherit" w:eastAsia="Times New Roman" w:hAnsi="inherit" w:cs="Consolas"/><w:color w:val="7D2727"/><w:sz w:val="20"/><w:szCs w:val="20"/><w:bdr w:val="none" w:sz="0" w:space="0" w:color="auto" w:frame="1"/><w:shd w:val="clear" w:color="auto" w:fill="EFF0F1"/><w:lang w:val="en-GB" w:eastAsia="en-GB"/></w:rPr><w:t>0</w:t></w:r><w:r><w:rPr><w:rFonts w:ascii="inherit" w:eastAsia="Times New Roman" w:hAnsi="inherit" w:cs="Consolas"/><w:color w:val="7D2727"/><w:sz w:val="20"/><w:szCs w:val="20"/><w:bdr w:val="none" w:sz="0" w:space="0" w:color="auto" w:frame="1"/><w:shd w:val="clear" w:color="auto" w:fill="EFF0F1"/><w:lang w:val="en-GB" w:eastAsia="en-GB"/></w:rPr><w:t>1</w:t></w:r></w:p><w:p w:rsidR="000438B5" w:rsidRDefault="000438B5" w:rsidP="000438B5"><w:pPr><w:shd w:val="clear" w:color="auto" w:fill="EFF0F1"/><w:tabs><w:tab w:val="left" w:pos="916"/><w:tab w:val="left" w:pos="1832"/><w:tab w:val="left" w:pos="2748"/><w:tab w:val="left" w:pos="3664"/><w:tab w:val="left" w:pos="4580"/><w:tab w:val="left" w:pos="5496"/><w:tab w:val="left" w:pos="6412"/><w:tab w:val="left" w:pos="7328"/><w:tab w:val="left" w:pos="8244"/><w:tab w:val="left" w:pos="9160"/><w:tab w:val="left" w:pos="10076"/><w:tab w:val="left" w:pos="10992"/><w:tab w:val="left" w:pos="11908"/><w:tab w:val="left" w:pos="12824"/><w:tab w:val="left" w:pos="13740"/><w:tab w:val="left" w:pos="14656"/></w:tabs><w:spacing w:after="0" w:line="240" w:lineRule="auto"/><w:textAlignment w:val="baseline"/><w:rPr><w:rFonts w:ascii="inherit" w:eastAsia="Times New Roman" w:hAnsi="inherit" w:cs="Consolas"/><w:color w:val="7D2727"/><w:sz w:val="20"/><w:szCs w:val="20"/><w:bdr w:val="none" w:sz="0" w:space="0" w:color="auto" w:frame="1"/><w:shd w:val="clear" w:color="auto" w:fill="EFF0F1"/><w:lang w:val="en-GB" w:eastAsia="en-GB"/></w:rPr></w:pPr><w:r><w:rPr><w:rFonts w:ascii="inherit" w:eastAsia="Times New Roman" w:hAnsi="inherit" w:cs="Consolas"/><w:color w:val="7D2727"/><w:sz w:val="20"/><w:szCs w:val="20"/><w:bdr w:val="none" w:sz="0" w:space="0" w:color="auto" w:frame="1"/><w:shd w:val="clear" w:color="auto" w:fill="EFF0F1"/><w:lang w:val="en-GB" w:eastAsia="en-GB"/></w:rPr><w:t>April took 100 mg of active drug.</w:t></w:r><w:bookmarkStart w:id="0" w:name="_GoBack"/><w:bookmarkEnd w:id="0"/></w:p><w:p w:rsidR="000438B5" w:rsidRDefault="000438B5" w:rsidP="00203710"><w:pPr><w:shd w:val="clear" w:color="auto" w:fill="EFF0F1"/><w:tabs><w:tab w:val="left" w:pos="916"/><w:tab w:val="left" w:pos="1832"/><w:tab w:val="left" w:pos="2748"/><w:tab w:val="left" w:pos="3664"/><w:tab w:val="left" w:pos="4580"/><w:tab w:val="left" w:pos="5496"/><w:tab w:val="left" w:pos="6412"/><w:tab w:val="left" w:pos="7328"/><w:tab w:val="left" w:pos="8244"/><w:tab w:val="left" w:pos="9160"/><w:tab w:val="left" w:pos="10076"/><w:tab w:val="left" w:pos="10992"/><w:tab w:val="left" w:pos="11908"/><w:tab w:val="left" w:pos="12824"/><w:tab w:val="left" w:pos="13740"/><w:tab w:val="left" w:pos="14656"/></w:tabs><w:spacing w:after="0" w:line="240" w:lineRule="auto"/><w:textAlignment w:val="baseline"/><w:rPr><w:rFonts w:ascii="inherit" w:eastAsia="Times New Roman" w:hAnsi="inherit" w:cs="Consolas"/><w:color w:val="7D2727"/><w:sz w:val="20"/><w:szCs w:val="20"/><w:bdr w:val="none" w:sz="0" w:space="0" w:color="auto" w:frame="1"/><w:shd w:val="clear" w:color="auto" w:fill="EFF0F1"/><w:lang w:val="en-GB" w:eastAsia="en-GB"/></w:rPr></w:pPr></w:p><w:p w:rsidR="000438B5" w:rsidRDefault="000438B5" w:rsidP="00203710"><w:pPr><w:shd w:val="clear" w:color="auto" w:fill="EFF0F1"/><w:tabs><w:tab w:val="left" w:pos="916"/><w:tab w:val="left" w:pos="1832"/><w:tab w:val="left" w:pos="2748"/><w:tab w:val="left" w:pos="3664"/><w:tab w:val="left" w:pos="4580"/><w:tab w:val="left" w:pos="5496"/><w:tab w:val="left" w:pos="6412"/><w:tab w:val="left" w:pos="7328"/><w:tab w:val="left" w:pos="8244"/><w:tab w:val="left" w:pos="9160"/><w:tab w:val="left" w:pos="10076"/><w:tab w:val="left" w:pos="10992"/><w:tab w:val="left" w:pos="11908"/><w:tab w:val="left" w:pos="12824"/><w:tab w:val="left" w:pos="13740"/><w:tab w:val="left" w:pos="14656"/></w:tabs><w:spacing w:after="0" w:line="240" w:lineRule="auto"/><w:textAlignment w:val="baseline"/><w:rPr><w:rFonts w:ascii="Consolas" w:eastAsia="Times New Roman" w:hAnsi="Consolas" w:cs="Consolas"/><w:color w:val="393318"/><w:sz w:val="20"/><w:szCs w:val="20"/><w:lang w:val="en-GB" w:eastAsia="en-GB"/></w:rPr></w:pPr></w:p><w:p w:rsidR="00450982" w:rsidRDefault="00203710"><w:pPr><w:pStyle w:val="Heading1"/></w:pPr><w:r><w:t>Heading, level 1</w:t></w:r></w:p><w:p w:rsidR="00450982" w:rsidRDefault="00203710"><w:pPr><w:pStyle w:val="IntenseQuote"/></w:pPr><w:r><w:t>Intense quote</w:t></w:r></w:p><w:p w:rsidR="00450982" w:rsidRDefault="00203710"><w:pPr><w:pStyle w:val="ListBullet"/></w:pPr><w:r><w:t>first item in unordered list</w:t></w:r></w:p><w:p w:rsidR="00450982" w:rsidRDefault="00203710"><w:pPr><w:pStyle w:val="ListNumber"/></w:pPr><w:r><w:t>first item in ordered list</w:t></w:r></w:p><w:tbl><w:tblPr><w:tblW w:w="0" w:type="auto"/><w:tblLook w:val="04A0" w:firstRow="1" w:lastRow="0" w:firstColumn="1" w:lastColumn="0" w:noHBand="0" w:noVBand="1"/></w:tblPr><w:tblGrid><w:gridCol w:w="2880"/><w:gridCol w:w="2880"/><w:gridCol w:w="2880"/></w:tblGrid><w:tr w:rsidR="00450982"><w:tc><w:tcPr><w:tcW w:w="2880" w:type="dxa"/></w:tcPr><w:p w:rsidR="00450982" w:rsidRDefault="00203710"><w:r><w:t>Qty</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="2880" w:type="dxa"/></w:tcPr><w:p w:rsidR="00450982" w:rsidRDefault="00203710"><w:r><w:t>Id</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="2880" w:type="dxa"/></w:tcPr><w:p w:rsidR="00450982" w:rsidRDefault="00203710"><w:r><w:t>Desc</w:t></w:r></w:p></w:tc></w:tr><w:tr w:rsidR="00450982"><w:tc><w:tcPr><w:tcW w:w="2880" w:type="dxa"/></w:tcPr><w:p w:rsidR="00450982" w:rsidRDefault="00203710"><w:r><w:t>3</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="2880" w:type="dxa"/></w:tcPr><w:p w:rsidR="00450982" w:rsidRDefault="00203710"><w:r><w:t>101</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="2880" w:type="dxa"/></w:tcPr><w:p w:rsidR="00450982" w:rsidRDefault="00203710"><w:r><w:t>Spam</w:t></w:r></w:p></w:tc></w:tr><w:tr w:rsidR="00450982"><w:tc><w:tcPr><w:tcW w:w="2880" w:type="dxa"/></w:tcPr><w:p w:rsidR="00450982" w:rsidRDefault="00203710"><w:r><w:t>7</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="2880" w:type="dxa"/></w:tcPr><w:p w:rsidR="00450982" w:rsidRDefault="00203710"><w:r><w:t>422</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="2880" w:type="dxa"/></w:tcPr><w:p w:rsidR="00450982" w:rsidRDefault="00203710"><w:r><w:t>Eggs</w:t></w:r></w:p></w:tc></w:tr><w:tr w:rsidR="00450982"><w:tc><w:tcPr><w:tcW w:w="2880" w:type="dxa"/></w:tcPr><w:p w:rsidR="00450982" w:rsidRDefault="00203710"><w:r><w:t>4</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="2880" w:type="dxa"/></w:tcPr><w:p w:rsidR="00450982" w:rsidRDefault="00203710"><w:r><w:t>631</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="2880" w:type="dxa"/></w:tcPr><w:p w:rsidR="00450982" w:rsidRDefault="00203710"><w:r><w:t>Spam, spam, eggs, and spam</w:t></w:r></w:p></w:tc></w:tr></w:tbl><w:p w:rsidR="00450982" w:rsidRDefault="00203710"><w:r><w:br w:type="page"/></w:r></w:p><w:sectPr w:rsidR="00450982" w:rsidSect="00034616"><w:pgSz w:w="12240" w:h="15840"/><w:pgMar w:top="1440" w:right="1800" w:bottom="1440" w:left="1800" w:header="720" w:footer="720" w:gutter="0"/><w:cols w:space="720"/><w:docGrid w:linePitch="360"/></w:sectPr></w:body></w:document>

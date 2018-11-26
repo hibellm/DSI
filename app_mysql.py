@@ -106,7 +106,7 @@ def index():
     gmails = cur.fetchall()
 
     # Get gmails
-    result = cur.execute("SELECT * FROM testdata")
+    result = cur.execute("SELECT * FROM dsi.testdata")
     data = cur.fetchall()
 
     #ADD A CHART
@@ -130,8 +130,10 @@ def metrics():
 # USER LOGIN
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-
+    
+        
     if request.method == 'POST':
+        print('this was a post request')
         # Get Form Fields
         userid = request.values.get('userid')
         password_candidate = request.values.get('password')
@@ -402,6 +404,14 @@ def read_log(logname):
 @app.route('/runcode',methods=['GET', 'POST'])
 @is_logged_in
 def runcode():
+
+    # Create cursor
+    cur = mysql.connection.cursor()
+      
+    result = cur.execute("SELECT * FROM dsi.jira order by jirakey")
+    jira = cur.fetchall()
+  
+
     x=['No file found yet!']
     i=0
     e=0
@@ -443,7 +453,7 @@ def runcode():
                 flash('No log file found to save','warning')
                 print('Cant fine the files... oh no!')                
 
-    return render_template('runcode.html',loglines=x,i=i,e=e,w=w)
+    return render_template('runcode.html',loglines=x,i=i,e=e,w=w,jira=jira)
 
 
 

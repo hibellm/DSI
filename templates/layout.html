@@ -29,56 +29,28 @@
             if (typeof messages != 'undefined' && messages != '[]') {
                 $('.ui.modal').modal('show');
             };
-        });
 
-        //$('#jiratable').tablesort();
+        });
 
         $('.ui.modal').modal({blurring: true}).modal('show');
       </script>
-  <script>
-      $(document)
-        .ready(function() {
-          $('.ui.form')
-            .form({
+      <script>
+        $(document).ready(function() {
+          $('#code2runform').form({
           inline: true,
               fields: {
-                userid: {
-                  identifier  : 'userid',
+                descript: {
+                  identifier  : 'descript',
                   rules: [
                     {
-                      type   : 'empty',
+                      type   : 'maxLength[200]',
                       prompt : 'Please enter your UserID'
                     }
                   ]
-                },                
-                email: {
-                  identifier  : 'email',
-                  rules: [
-                    {
-                      type   : 'empty',
-                      prompt : 'Please enter your e-mail'
-                    },
-                    {
-                      type   : 'email',
-                      prompt : 'Please enter a valid e-mail'
-                    }
-                  ]
-                },
-                password: {
-                  identifier  : 'password',
-                  rules: [
-                    {
-                      type   : 'empty',
-                      prompt : 'Please enter your Roche password'
-                    }
-                  ]
-                }
+                }          
               }
-            })
-          ;
-        })
-      ;
-
+            });
+        });
       </script>   
       
       <style>

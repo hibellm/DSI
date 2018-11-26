@@ -9,10 +9,51 @@
 </div>
 
 
-<form class="ui form">
-    <button class="ui button positive" name="submit" type="submit" value="submit">Run Code</button>
-    <button class="ui button"          name="clear"  type="clear"  value="clear">Clear Log</button>
-    <button class="ui button blue "    name="save"   type="save"   value="save">Save Log</button>
+<form class="ui form" id="runcodeform">
+    <div class="ui segment inverted">
+      <div class="ui header">Enter Delivery details</div>
+
+      <div class="ui fields">
+        <div class="three wide field">
+            <select class="ui fluid search dropdown" id="jira" name="jk">
+              <option value="">Jira ticket number</option>
+              {% for jt in jira %}
+                <option value="{{jt.jirakey}}">{{jt.jirakey}}</option>
+              {% endfor %}
+            </select> 
+        </div>            
+        <div class="ui thirteen wide field">
+          <div class="ui fields">
+
+                <div class="ui six wide field"><div class="ui right aligned header inverted">Documents</div></div>
+                <div class="ui two wide field"> <a class="ui label"><i class="ui icon check circle green"></i>CSR</a></div>
+                <div class="ui two wide field">  <a class="ui label"><i class="ui icon check circle green"></i>Protocol</a></div>
+                <div class="ui two wide field">  <a class="ui label"><i class="ui icon check circle green"></i>eCRF</a></div>
+                <div class="ui two wide field">  <a class="ui label"><i class="ui icon check circle green"></i>Final report</a></div>
+                <div class="ui two wide field"><a class="ui label"><i class="ui icon check circle green"></i>Define.xml</a></div>
+        </div>
+        </div>                                
+      </div>
+
+      <div class="fields">
+        <div class="eight wide field">
+            <input type="text" placeholder="Path to source data">
+        </div>
+        <div><i class="ui icon chevron circle right large"></i></div>
+        <div class="eight wide field">
+            <input type="text" placeholder="Path to deliverable">
+        </div>
+      </div>               
+      <div class="field">
+        <label>Description (200 chars max)</label>
+        <textarea rows="2" id="descript" name="descript"></textarea>
+      </div>
+       
+
+    <button class="ui button submit green" name="submit" type="submit" value="submit">Run Code</button>
+    <button class="ui button"              name="clear"  type="clear"  value="clear">Clear Log</button>
+    <button class="ui button blue "        name="save"   type="save"   value="save">Save Log</button>
+  </div>    
 </form>
 <br>
 
@@ -46,15 +87,7 @@
 
   <!--JS SCRIPTS FOR THE SEMANTIC-UI TO WORK AS REQUIRED-->
   <script type="text/javascript">
-    $('#jiratable').tablesort();
-    $('#studyselect').dropdown();
-    $('#schemasel').dropdown();
-    $('#tablesel').dropdown();
-
-    $('#search-select').dropdown();
-
-    $('#schemasubmit').form('submit');
-    $('#schemaclear').form('clear');
+    $('#jira').dropdown();
 
   </script>  
   
